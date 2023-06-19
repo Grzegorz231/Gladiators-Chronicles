@@ -22,7 +22,7 @@ public class Music : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "3")
+        if (scene.name == "Menu")
             audio.mute = true;
         else
             audio.mute = false;

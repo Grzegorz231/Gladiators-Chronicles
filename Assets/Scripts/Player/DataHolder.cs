@@ -5,6 +5,7 @@ public static class DataHolder
 {
     //собираем монетки
     public static int moneyToSave = 0;
+    public static int livesToSave = 1;
 
     // атакуем
     public static bool playerHaveSpearToSave = false;

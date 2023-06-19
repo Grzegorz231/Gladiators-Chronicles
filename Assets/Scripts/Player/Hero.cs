@@ -9,7 +9,7 @@ public class Hero : Entity
     public bool checkLadder;
     public LayerMask ladderMask;
     public float ladderSpeed = 1.5f;
-    
+
     //собираем монетки
     public int money;
     public Text count;
@@ -21,7 +21,7 @@ public class Hero : Entity
     public Transform attackPos;
     public float attackRange;
     public LayerMask enemy; //не забывай добавлять отдельные слои для всех врагов
-    
+
     // двигаемся
     [SerializeField] private float speed = 3;
     private Vector2 moveVector;
@@ -51,6 +51,9 @@ public class Hero : Entity
     public bool onGround;
 
     // спрайты, анимации и физика
+    [SerializeField] private Image[] hearts;
+    [SerializeField] private Sprite aliveheart;
+    [SerializeField] private Sprite deadHeart;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     public Sprite playerWithSword;
@@ -73,7 +76,7 @@ public class Hero : Entity
 
     private void FixedUpdate()
     {
-        
+        count.text = money.ToString();
         if (dashProcess == true) { DashFixedUpdate(); }
     }
     private void Update()
@@ -97,7 +100,8 @@ public class Hero : Entity
         }
         Jump();
         if (Input.GetKeyDown(KeyCode.LeftShift) && !lockDash) 
-        { 
+        {
+            Timer.TimerSwitch();
             lockDash = true;
             Invoke("DashLock", dashLock);
             Dash();
@@ -110,6 +114,18 @@ public class Hero : Entity
         CheckLadder();
         LadderMechanic();
         LadderUpDown();
+
+        for (int i = 0; i<hearts.Length; i++)
+        {
+            if(i < lives)
+            {
+                hearts[i].sprite = aliveheart;
+            }
+            else
+            {
+                hearts[i].sprite = deadHeart;
+            }
+        }
     }
     public void OnDestroy()
     {
@@ -139,12 +155,14 @@ public class Hero : Entity
     {
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
+            DataHolder.livesToSave = 1;
             DataHolder.moneyToSave = 0;
             DataHolder.jumpForceToSave = 220;
             DataHolder.playerHaveSpearToSave = false;
             DataHolder.attackRangeToSave = 1;
             DataHolder.dashLockToSave = 10;
         }
+        lives = DataHolder.livesToSave;
         money = DataHolder.moneyToSave;
         playerHaveSpear = DataHolder.playerHaveSpearToSave;
         attackRange = DataHolder.attackRangeToSave;
@@ -158,6 +176,7 @@ public class Hero : Entity
         DataHolder.attackRangeToSave = attackRange;
         DataHolder.dashLockToSave = dashLock;
         DataHolder.jumpForceToSave = jumpForce;
+
     }
     public void PlayerHaveSpear()
     {
