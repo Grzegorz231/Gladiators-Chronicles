@@ -477,10 +477,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1920062493}
-        m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 3
+      - m_Target: {fileID: 924287610}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: LoadSettings
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1367,6 +1367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314392561}
   - component: {fileID: 1314392560}
+  - component: {fileID: 1314392562}
   m_Layer: 0
   m_Name: Main theme
   m_TagString: Untagged
@@ -1386,7 +1387,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 84d0cbc97cdebeb4197923908d104db3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.268
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1485,6 +1486,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1314392562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314392559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f402b2d7937b24eba17f53a8bf1d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a_s: {fileID: 1314392560}
 --- !u!1 &1505687622
 GameObject:
   m_ObjectHideFlags: 0

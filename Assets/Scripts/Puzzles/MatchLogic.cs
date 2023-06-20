@@ -28,7 +28,7 @@ namespace Assets.Scripts
             pointsText.text = points + "/" + maxPoints;
             if (points == maxPoints)
             {
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("Menu");
             }
         }
 

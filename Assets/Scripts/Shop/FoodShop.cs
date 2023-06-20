@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodShop : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class FoodShop : MonoBehaviour
     public bool inShop;
     public Transform shopCheck;
     public LayerMask _layerFoodShop;
+
     public void Update()
     {
         CheckingShop();

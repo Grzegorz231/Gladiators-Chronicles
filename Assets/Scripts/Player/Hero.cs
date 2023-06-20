@@ -70,12 +70,12 @@ public class Hero : Entity
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         Instance = this;
-        isRecharged = true;
-        lives = 1;
+        isRecharged = true;      
     }
 
     private void FixedUpdate()
     {
+        Jump();
         count.text = money.ToString();
         if (dashProcess == true) { DashFixedUpdate(); }
     }
@@ -98,7 +98,6 @@ public class Hero : Entity
         {
             Run();
         }
-        Jump();
         if (Input.GetKeyDown(KeyCode.LeftShift) && !lockDash) 
         {
             Timer.TimerSwitch();
@@ -128,7 +127,7 @@ public class Hero : Entity
         }
     }
     public void OnDestroy()
-    {
+    {       
         ToSave();
     }
     void LadderUpDown()
@@ -157,26 +156,55 @@ public class Hero : Entity
         {
             DataHolder.livesToSave = 1;
             DataHolder.moneyToSave = 0;
-            DataHolder.jumpForceToSave = 220;
+            DataHolder.jumpForceToSave = 280;
             DataHolder.playerHaveSpearToSave = false;
             DataHolder.attackRangeToSave = 1;
             DataHolder.dashLockToSave = 10;
+
+            lives = DataHolder.livesToSave;
+            money = DataHolder.moneyToSave;
+            playerHaveSpear = DataHolder.playerHaveSpearToSave;
+            attackRange = DataHolder.attackRangeToSave;
+            dashLock = DataHolder.dashLockToSave;
+            jumpForce = DataHolder.jumpForceToSave;
         }
-        lives = DataHolder.livesToSave;
-        money = DataHolder.moneyToSave;
-        playerHaveSpear = DataHolder.playerHaveSpearToSave;
-        attackRange = DataHolder.attackRangeToSave;
-        dashLock = DataHolder.dashLockToSave;
-        jumpForce = DataHolder.jumpForceToSave;
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            DataHolder.livesToSaveChange = DataHolder.livesToSave;
+            DataHolder.moneyToSaveChange = DataHolder.moneyToSave;
+            DataHolder.jumpForceToSaveChange = DataHolder.jumpForceToSave;
+            DataHolder.playerHaveSpearToSaveChange = DataHolder.playerHaveSpearToSave;
+            DataHolder.attackRangeToSaveChange = DataHolder.attackRangeToSave;
+            DataHolder.dashLockToSaveChange = DataHolder.dashLockToSave;
+
+            lives = DataHolder.livesToSaveChange;
+            money = DataHolder.moneyToSaveChange;
+            playerHaveSpear = DataHolder.playerHaveSpearToSaveChange;
+            attackRange = DataHolder.attackRangeToSaveChange;
+            dashLock = DataHolder.dashLockToSaveChange;
+            jumpForce = DataHolder.jumpForceToSaveChange;
+        }
     }
     public void ToSave()
     {
-        DataHolder.moneyToSave = money;
-        DataHolder.playerHaveSpearToSave = playerHaveSpear;
-        DataHolder.attackRangeToSave = attackRange;
-        DataHolder.dashLockToSave = dashLock;
-        DataHolder.jumpForceToSave = jumpForce;
-
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            DataHolder.livesToSaveChange = DataHolder.livesToSave;
+            DataHolder.moneyToSaveChange = DataHolder.moneyToSave;
+            DataHolder.jumpForceToSaveChange = DataHolder.jumpForceToSave;
+            DataHolder.playerHaveSpearToSaveChange = DataHolder.playerHaveSpearToSave;
+            DataHolder.attackRangeToSaveChange = DataHolder.attackRangeToSave;
+            DataHolder.dashLockToSaveChange = DataHolder.dashLockToSave;
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            DataHolder.moneyToSave = money;
+            DataHolder.playerHaveSpearToSave = playerHaveSpear;
+            DataHolder.attackRangeToSave = attackRange;
+            DataHolder.dashLockToSave = dashLock;
+            DataHolder.jumpForceToSave = jumpForce;
+            DataHolder.livesToSave = lives;
+        }    
     }
     public void PlayerHaveSpear()
     {

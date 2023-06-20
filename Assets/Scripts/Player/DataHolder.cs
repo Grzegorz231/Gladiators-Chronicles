@@ -3,17 +3,17 @@ using UnityEngine.SceneManagement;
 
 public static class DataHolder
 {
-    //собираем монетки
     public static int moneyToSave = 0;
     public static int livesToSave = 1;
-
-    // атакуем
     public static bool playerHaveSpearToSave = false;
     public static float attackRangeToSave = 1;
-
-    //дэшимся
     public static float dashLockToSave = 10;
+    public static float jumpForceToSave = 280;
 
-    // прыгаем
-    public static float jumpForceToSave = 220;
+    public static int moneyToSaveChange;
+    public static int livesToSaveChange;
+    public static bool playerHaveSpearToSaveChange;
+    public static float attackRangeToSaveChange;
+    public static float dashLockToSaveChange;
+    public static float jumpForceToSaveChange;
 }

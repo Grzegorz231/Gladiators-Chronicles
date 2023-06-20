@@ -35,5 +35,9 @@ public class Timer : MonoBehaviour
             timer = 5;
             timerText.text = timer.ToString();
         }
+        if (hero.dashLock == 5)
+        {
+            timerText.text = timer.ToString();
+        }
     }
 }
